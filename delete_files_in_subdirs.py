@@ -1,6 +1,8 @@
 import os
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
+
 
 def delete_files_in_subdirs():
     # Create a tkinter window and hide it
@@ -8,7 +10,12 @@ def delete_files_in_subdirs():
     root.withdraw()
 
     # Use filedialog.askdirectory() to display a folder selection dialog and get the selected folder
-    root_dir = filedialog.askdirectory()
+    root_dir = filedialog.askdirectory(title="Select the Root Directory")
+
+    # Show a confirmation dialog before deleting files
+    confirm_msg = f"Are you sure you want to delete ALL files within {root_dir}?"
+    if not messagebox.askyesno("Confirm Deletion", confirm_msg):
+        return
 
     # Loop through all subdirectories and files in the root directory and its subdirectories
     for dirpath, dirnames, filenames in os.walk(root_dir):
