@@ -5,6 +5,19 @@ from tkinter import messagebox
 
 
 def delete_files_in_subdirs():
+    """
+    "Loop through all subdirectories and files in the root directory and its subdirectories and delete
+    all files."
+
+    The first thing we do is create a tkinter window and hide it. We do this so that we can use
+    tkinter's filedialog.askdirectory() function to display a folder selection dialog and get the
+    selected folder
+
+    Returns:
+      A list of tuples. Each tuple contains the directory path, a list of subdirectories, and a list of
+    files.
+    """
+
     # Create a tkinter window and hide it
     root = tk.Tk()
     root.withdraw()
